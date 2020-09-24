@@ -8,10 +8,14 @@ class App extends React.Component {
     this.state = {
       verified: false,
       firstName: "",
-      lastName: ""
+      lastName: "",
+      email: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
 
+  };
+  onClickSubmitHandler(event){
+    alert('submitted successfully');
   };
   mySubmitHandler = (event) => {
     event.preventDefault();
@@ -44,18 +48,18 @@ class App extends React.Component {
         <img src={logo} className="App-logo" alt="logo" />       
         <h2>Demo Form</h2>
       </header>
-        <form onSubmit={this.mySubmitHandler}>
+        <form onSubmit={this.mySubmitHandler}  className="form-container">
           <h1>Patient Enrollment {this.state.username}</h1>
           <div>
           <label>
-            First Name:
+            <b>First Name </b> <br/>
             <input
               name="firstName"
               value={this.state.firstName}
               onChange={this.handleInputChange} />
           </label>
           <label>
-            Last Name:
+            <b>Last Name </b> <br/>
             <input
               name="lastName"
               value={this.state.lastName}
@@ -65,23 +69,21 @@ class App extends React.Component {
           </div>
           <div>
           <label>
-            Date of Birth:
+            <b>Email </b><br/>
             <input
-              name="birthdate"
-              type="date"
+              name="email"
+              type="email"
+              onChange={this.handleInputChange}
               />
           </label>
-          <label>
-            ID Verified:
-            <input
-              name="verified"
-              type="checkbox"
-              checked={this.state.verified}
-              onChange={this.handleInputChange} />
-          </label>
+          <b> <label> Select a product</label> </b> <br></br>
+
+          <select name="products" id="products">
+            <option value="cosentyx">Cosentyx</option>
+          </select>
           <br/>
           </div>
-        <input type='submit' className="submit_button"/>
+        <input type='submit' className="submit_button" onClick={this.onClickSubmitHandler} />
         </form>
       </div>
     );

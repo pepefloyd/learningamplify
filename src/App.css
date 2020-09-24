@@ -5,17 +5,31 @@
   margin-top: 20px;
 }
 
+.form-container{
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.form-container label {
+  width: 70%;
+  color: black;
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 4px;
+
+  margin: 8px 0;
+  box-sizing: border-box;
+
+}
 .App-logo {
   height: 20vmin;
   pointer-events: none;
 }
 
-label {
-  display: inline-block;
-  width:140px;
-  text-align: right;
-  margin-top: 23px;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
