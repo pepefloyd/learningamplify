@@ -15,8 +15,19 @@ class App extends React.Component {
   };
   mySubmitHandler = (event) => {
     event.preventDefault();
-    alert("Submitting " + this.state.firstName + ' ' +  this.state.lastName + this.state.verified);
-  };
+    fetch("https://vf8yor9tih.execute-api.us-east-1.amazonaws.com/Prod/sfdc",{
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+                    'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.state)
+    }).then(response => {
+            console.log(response)
+    }).catch(error =>{
+            console.log(error)
+    })
+  };  
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -35,6 +46,7 @@ class App extends React.Component {
       </header>
         <form onSubmit={this.mySubmitHandler}>
           <h1>Patient Enrollment {this.state.username}</h1>
+          <div>
           <label>
             First Name:
             <input
@@ -50,6 +62,15 @@ class App extends React.Component {
               onChange={this.handleInputChange} />
           </label>
           <br/>
+          </div>
+          <div>
+          <label>
+            Date of Birth:
+            <input
+              name="birthdate"
+              type="date"
+              />
+          </label>
           <label>
             ID Verified:
             <input
@@ -59,7 +80,8 @@ class App extends React.Component {
               onChange={this.handleInputChange} />
           </label>
           <br/>
-        <input type='submit'/>
+          </div>
+        <input type='submit' className="submit_button"/>
         </form>
       </div>
     );
